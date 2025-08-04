@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Team</title>
+    <!-- Tailwind CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-slideInUp {
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+        .team-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+        }
+        .team-card:hover .card-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .team-card:hover .card-overlay {
+            opacity: 1;
+        }
+        .card-overlay {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
+        }
+        .team-card:hover .social-links {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .social-links {
+            transform: translateY(15px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .team-card:hover .profile-image {
+            transform: scale(1.1);
+        }
+        .profile-image {
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .card-content {
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 10;
+        }
+        .team-card:hover .team-card-badge {
+            opacity: 1;
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1), rgba(236, 72, 153, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .team-card:hover::before {
+            opacity: 1;
+        }
+        .team-card > * {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Hero Section -->
+<header class="bg-gradient-to-r from-purple-600 to-purple-800 text-white text-center py-16 animate-fadeIn relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-10"></div>
+        <div class="relative z-10">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Meet Our <span class="bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">Team</span>
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto px-4">
+                A dedicated group of passionate individuals working together to create amazing things.
+            </p>
+        </div>
+    </header>
+
+    <!-- Team Members Grid -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Amazing Team</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Team Member Card 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden team-card animate-slideInUp relative">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop&crop=face&q=80" alt="John Smith" class="profile-image w-full h-48 object-cover">
+                    <div class="card-overlay absolute inset-0 flex items-end">
+                        <div class="text-white p-4">
+                            <p class="text-sm font-medium">Passionate about building efficient solutions with modern technologies.</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-3 right-3 opacity-0 team-card-badge transition-opacity duration-300">
+                        <div class="bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Dev</div>
+                    </div>
+                </div>
+                <div class="card-content p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">John Smith</h2>
+                    <p class="text-blue-600 font-semibold mb-3">Full Stack Developer</p>
+                    <div class="social-links flex space-x-4">
+                        <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="#" class="flex items-center text-gray-700 hover:text-gray-900 transition-colors font-medium">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"/>
+                            </svg>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member Card 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden team-card animate-slideInUp relative">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=800&fit=crop&crop=faces&q=80" alt="Emma Johnson" class="profile-image w-full h-48 object-cover">
+                    <div class="card-overlay absolute inset-0 flex items-end">
+                        <div class="text-white p-4">
+                            <p class="text-sm font-medium">Creating beautiful designs with user experience in mind and attention to detail.</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-3 right-3 opacity-0 team-card-badge transition-opacity duration-300">
+                        <div class="bg-purple-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Design</div>
+                    </div>
+                </div>
+                <div class="card-content p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Emma Johnson</h2>
+                    <p class="text-purple-600 font-semibold mb-3">UI/UX Designer</p>
+                    <div class="social-links flex space-x-4">
+                        <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="#" class="flex items-center text-pink-600 hover:text-pink-800 transition-colors font-medium">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 0C4.48 0 0 4.48 0 10s4.48 10 10 10c5.51 0 10-4.48 10-10S15.51 0 10 0zM6.34 7.58c.24-.9 1.08-1.54 2.02-1.54.94 0 1.79.63 2.02 1.54H6.34zm7.32 0c.23-.9 1.08-1.54 2.02-1.54.93 0 1.78.64 2.02 1.54h-4.04z"/>
+                            </svg>
+                            Dribbble
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member Card 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden team-card animate-slideInUp relative">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=800&fit=crop&crop=face&q=80" alt="Michael Thompson" class="profile-image w-full h-48 object-cover">
+                    <div class="card-overlay absolute inset-0 flex items-end">
+                        <div class="text-white p-4">
+                            <p class="text-sm font-medium">Leading with passion, excellent communication, and strategic vision for success.</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-3 right-3 opacity-0 team-card-badge transition-opacity duration-300">
+                        <div class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-semibold">Lead</div>
+                    </div>
+                </div>
+                <div class="card-content p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Michael Thompson</h2>
+                    <p class="text-green-600 font-semibold mb-3">Project Manager</p>
+                    <div class="social-links flex space-x-4">
+                        <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="#" class="flex items-center text-green-600 hover:text-green-800 transition-colors font-medium">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            Email
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Team Member Card 4 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden team-card animate-slideInUp relative">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=800&fit=crop&crop=face&q=80" alt="Sophia Wilson" class="profile-image w-full h-48 object-cover">
+                    <div class="card-overlay absolute inset-0 flex items-end">
+                        <div class="text-white p-4">
+                            <p class="text-sm font-medium">Enhancing user interfaces with intuitive design and seamless user experiences.</p>
+                        </div>
+                    </div>
+                    <div class="absolute top-3 right-3 opacity-0 team-card-badge transition-opacity duration-300">
+                        <div class="bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-semibold">UX</div>
+                    </div>
+                </div>
+                <div class="card-content p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-1">Sophia Wilson</h2>
+                    <p class="text-pink-600 font-semibold mb-3">UI/UX Engineer</p>
+                    <div class="social-links flex space-x-4">
+                        <a href="#" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors font-medium">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a href="#" class="flex items-center text-purple-600 hover:text-purple-800 transition-colors font-medium">
+                            <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm8 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z" clip-rule="evenodd"/>
+                            </svg>
+                            Figma
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="bg-gradient-to-r from-purple-600 to-purple-800 text-white text-center py-8 mt-12">
+        <p class="text-lg font-medium">TechTeam Solutions &copy; 2025 | Building the future together</p>
+        <p class="text-sm text-gray-300 mt-2">Follow us on social media for updates</p>
+    </footer>
+
+</body>
+</html>
